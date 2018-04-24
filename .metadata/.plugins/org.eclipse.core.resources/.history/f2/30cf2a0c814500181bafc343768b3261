@@ -1,0 +1,37 @@
+package com.example.demo;
+
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rabbitmq.client.ConnectionFactory;
+import org.springframework.amqp.core.Queue;
+
+@SpringBootApplication
+@RestController
+public class SpringAmqpApplication {
+
+	@Autowired
+	AMQPSender sender;
+	
+	@Autowired
+	AMQPReceiver receiver;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(SpringAmqpApplication.class, args);
+		
+		CachingConnectionFactory cf = new CachingConnectionFactory();
+		
+		RabbitAdmin admin = new RabbitAdmin(cf);
+		Queue queue = new Queue("myQueue");
+		admin.declareQueue(queue);
+		
+		
+		
+		
+		
+	}
+}

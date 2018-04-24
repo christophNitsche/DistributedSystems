@@ -1,0 +1,19 @@
+package com.example.demo;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class WebController {
+
+    @Autowired
+    private TodoRepository repository;
+
+    @RequestMapping("/ui")
+    String list(Model model){
+        Iterable<Todo> todos = repository.findAll();
+        model.addAttribute("todos", todos);
+        return "todos";
+    }
+	
+}

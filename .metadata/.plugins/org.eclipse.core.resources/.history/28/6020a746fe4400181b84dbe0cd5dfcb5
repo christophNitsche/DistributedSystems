@@ -1,0 +1,18 @@
+package com.example.demo;
+
+import org.springframework.amqp.core.Queue;
+
+public class AMQPSender {
+
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+	
+	@Autowired
+	private Queue queue;
+	
+	public void send(String message)
+	{
+		this.rabbitTemplate.convertAndSend(queue.getName(), message);
+		System.out.println(" [x] Sent '" + message + "'");
+	}
+}

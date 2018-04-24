@@ -1,0 +1,9 @@
+INDEX VERSION 1.130+/home/christoph/Documents/workspace-sts-3.9.3.RELEASE/.metadata/.plugins/org.eclipse.jdt.core
+664535062.index
+3411070565.index
+1741478884.index
+2034304110.index
+1890847894.index
+2618690012.index
+1942877025.index
+1088303082.index

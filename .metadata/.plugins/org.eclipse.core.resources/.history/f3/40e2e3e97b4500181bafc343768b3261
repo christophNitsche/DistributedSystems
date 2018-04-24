@@ -1,0 +1,22 @@
+package com.example.demo.model;
+
+import java.io.Serializable;
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("Student")
+public class Bathtub implements Serializable {
+
+	public enum Producer{
+		SIEMANS, MEILE, BUSCH
+	}
+	
+	private String id;
+	private String descpription;
+	
+	
+	
+	
+	
+	
+	
+}
