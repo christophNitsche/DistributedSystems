@@ -16,9 +16,9 @@ public class ToDo {
 	
 	ToDo () {}
 	
-	ToDo(Long id, String title, Boolean completed)
+	ToDo(/*Long id,*/ String title, Boolean completed)
 	{
-		this.id = id;
+		//this.id = id;
 		this.title = title;
 		this.completed = completed;
 	}

@@ -33,11 +33,10 @@ public class ToDosController {
     }
     
     @PostMapping
-    public @ResponseBody String addNewToDo(@RequestParam Long id, @RequestParam String title)
+    public @ResponseBody ToDo addNewToDo(@RequestParam String title)
     {
-    	ToDo todo = new ToDo(id, title, false);
-    	repository.save(todo);
-    	return "ToDo successfully added";
+    	ToDo todo = new ToDo(/*id,*/ title, false);
+    	return repository.save(todo);
     }
     
     @PutMapping(path="/{id}")
