@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="demoMYSQL"/>
 <aop-project name="GraphicalToDoListApplication"/>
+<aop-project name="SynchronousSpringApplication"/>
 </aop-reference-model>

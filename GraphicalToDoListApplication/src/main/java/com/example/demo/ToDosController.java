@@ -1,3 +1,4 @@
+
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping(path="/api/todos")
 public class ToDosController {
 	
     @Autowired
     private ToDoRepository repository;
-    
+       
     @GetMapping
     public @ResponseBody Iterable<ToDo> listAllTodos(Model model){
     	return repository.findAll();
@@ -38,7 +38,7 @@ public class ToDosController {
     	ToDo todo = new ToDo(/*id,*/ title, false);
     	return repository.save(todo);
     }
-    
+ 
     @PutMapping(path="/{id}")
     public void updateToDo(@PathVariable Long id )
     {
@@ -46,10 +46,10 @@ public class ToDosController {
 		toDo.setCompleted(true);
     	repository.save(toDo);
     }
-    
+       
     @DeleteMapping(path="/{id}")
     public void deleteToDo(@PathVariable Long id )
     {
     	repository.deleteById(id);
-    }    
+    }
 }

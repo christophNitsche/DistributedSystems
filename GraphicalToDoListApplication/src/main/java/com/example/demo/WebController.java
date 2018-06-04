@@ -10,7 +10,7 @@ public class WebController {
 
     @Autowired
     private ToDoRepository repository;
-
+    
     @RequestMapping("/ui")
     String list(Model model){
         Iterable<ToDo> todos = repository.findAll();
