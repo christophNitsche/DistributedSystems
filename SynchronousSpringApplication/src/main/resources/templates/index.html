@@ -21,7 +21,29 @@
 		</table>
 	</div> 
 	<form method="GET" th:action="@{|/a|}">
-						<input class="w3-button w3-black" type="submit" value="Get All Todos" />
-					</form>
+		<input class="w3-button w3-black" type="submit" value="Get All Todos" />
+	</form>
+	
+	<h2>Add a new ToDo</h2>
+	<div>
+		<table class="w3-table-all w3-hoverable">
+			<tr class="w3-teal">
+				<th>Item</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<form method="POST" th:action="@{/add}">
+				<td>
+					<label for="description">Beschreibung</label>
+					<input type="text" name="toDo" size="40"/>				
+				</td>
+				<td>
+					<input class="w3-button w3-black" type="submit" value="Add New ToDo"/>
+				</td>
+				</form>
+			</tr>
+		</table>
+	</div>
+		
 </body>
 </html>
