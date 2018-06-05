@@ -6,44 +6,103 @@
 </head>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <body>
-	<h1>Hallo, Welt!</h1>
-	<div th:unless="${#lists.isEmpty(alltodos)}">
-		<table class="w3-table-all w3-hoverable">
-			<tr class="w3-teal">
-				<th> Item</th>
-				<th> Action </th>
-			</tr>
-			<tr th:each="item : ${alltodos}">
-				<td th:text="${item}"/>				
-				<td>					
-				</td>	
-			</tr>
-		</table>
-	</div> 
-	<form method="GET" th:action="@{|/a|}">
-		<input class="w3-button w3-black" type="submit" value="Get All Todos" />
-	</form>
-	
-	<h2>Add a new ToDo</h2>
-	<div>
-		<table class="w3-table-all w3-hoverable">
-			<tr class="w3-teal">
-				<th>Item</th>
-				<th>Action</th>
-			</tr>
-			<tr>
-				<form method="POST" th:action="@{/add}">
-				<td>
-					<label for="description">Beschreibung</label>
-					<input type="text" name="toDo" size="40"/>				
-				</td>
-				<td>
-					<input class="w3-button w3-black" type="submit" value="Add New ToDo"/>
-				</td>
+	<!-- <h1>Hallo, Welt!</h1> -->
+	<table border="1px" style="width:100%">
+		<tr>
+			<td>
+				<h3>Hallo, Welt!</h3>
+				<div th:unless="${#lists.isEmpty(alltodos)}" style="margin:0 auto;">
+					<table class="w3-table-all w3-hoverable" style="width:40%">
+						<tr class="w3-teal">
+							<th>Item</th>
+						</tr>
+						<tr th:each="item : ${alltodos}">
+							<td th:text="${item}"/>				
+							<td>					
+							</td>	
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td>
+				<h3>Add a new ToDo</h3>
+				<div style="margin:0 auto;">
+					<table class="w3-table-all w3-hoverable" style="width:40%">
+					<tr class="w3-teal">
+						<th>Item</th>
+						<th>Action</th>
+					</tr>
+					<tr>
+						<form method="POST" th:action="@{|/add|}">
+						<td>
+						<label for="description">Beschreibung</label>
+						<input type="text" name="toDo" size="40"/>				
+						</td>
+						<td>
+							<input class="w3-button w3-black" type="submit" value="Add New ToDo"/>
+						</td>
+						</form>
+					</tr>
+					</table>
+				</div>
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<form method="GET" th:action="@{|/a|}">
+					<input class="w3-button w3-black" type="submit" value="Get All Todos" />
 				</form>
-			</tr>
-		</table>
-	</div>
-		
+			</td>
+			<td>
+				<h3>Modify a ToDo</h3>
+				<div>
+					<table class="w3-table-all w3-hoverable" style="width:40%">
+					<tr class="w3-teal">
+						<th>Item</th>
+						<th>Action</th>
+					</tr>
+					<tr>
+						<form th:method="put" th:action="@{|/finish|}">
+							<tr>
+								<td>
+									<label for="description">Id</label>
+									<input type="text" name="toDoId" th:value="*{toDoId}"size="10"/>				
+								</td>
+								<td>
+									<input class="w3-button w3-black" type="submit" value="Finish"/>
+								</td>
+							</tr>
+						</form>
+						</tr>
+					</table>
+				</div>		
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<h3>Remove a ToDo</h3>
+				<div>
+					<table class="w3-table-all w3-hoverable" style="width:40%">
+						<tr class="w3-teal">
+							<th>Item</th>
+							<th>Action</th>
+						</tr>
+						<tr>
+							<form th:method="DELETE" th:action="@{|/remove|}">
+								<td>
+									<label for="description">Id</label>
+									<input type="text" name="toDoId" th:value="*{toDoId}" size="10"/>				
+								</td>
+								<td>
+									<input class="w3-button w3-black" type="submit" value="Remove"/>
+								</td>
+							</form>
+						</tr>
+					</table>
+				</div>
+			</td>		
+		</tr>
+	</table>	
 </body>
 </html>

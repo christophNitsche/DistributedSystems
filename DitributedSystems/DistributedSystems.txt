@@ -1,0 +1,27 @@
+Commands
+
+./mvnw package && java -jar target/GraphicalToDoListApplication-0.0.1-SNAPSHOT.jar
+
+
+
+
+
+
+
+Docker
+sudo docker container ls
+sudo docker start my-mysql
+docker image save mysql -o mySqlImage.tar
+docker exec -it my-mysql bash
+	mysql -p -> password
+
+
+
+
+GIT
+git init
+git add .
+git status
+git commit -m "adsf"
+git remote add origin htpps://""""".git
+git push origin master

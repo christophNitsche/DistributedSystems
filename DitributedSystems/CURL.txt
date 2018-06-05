@@ -1,0 +1,11 @@
+Commands:
+
+curl -X GET 'localhost:8080/api/todos'
+curl -X GET 'localhost:8080/api/todos/8'
+curl -X POST 'localhost:8080/api/todos?id=1&title=Saugen'
+curl -X POST 'localhost:8080/api/todos?title=Saugen'
+curl -X PUT 'localhost:8080/api/todos/8'
+curl -X DELETE 'localhost:8080/api/todos/7'
+
+
+

@@ -5,10 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -62,21 +65,45 @@ public class SynchronousSpringApplication {
         //}
         
         return "index";
-
-}
+	}
 	
-	
-	/*
-	public String callService()
+	@PostMapping("/add")
+	public String addToDo(String toDo)
 	{
 		RestTemplate template = new RestTemplate();
-		String url = "http://localhost:8080/demo/all";
 		
-		ResponseEntity<String> response = template.getForEntity(url, String.class);
+		// localhost:8080/api/todos?title=Saugen
 		
-		return response.getBody();
-	}	
-	*/
+		String url = "http://localhost:8080/api/todos?title=" + toDo;
+		
+		ResponseEntity<String> response = template.postForEntity(url, null, String.class);
+		
+		return "redirect:/";
+	}
+	
+	@PutMapping("/finish")
+	public String finishToDo(@RequestParam(name="toDoId") Long Id)
+	{
+		System.out.println(Id);
+		RestTemplate template = new RestTemplate();
+		String url = "http://localhost:8080/api/todos/" + Id;
+		
+		template.put(url, null);
+		//ResponseEntity<String> response = template.postForEntity(url, null, String.class);
+		
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/remove")
+	public String removeToDo(@RequestParam(name="toDoId")Long Id)
+	{
+		RestTemplate template = new RestTemplate();
+		String url = "http://localhost:8080/api/todos/" + Id;
+		template.delete(url);
+		
+		return "redirect:/";
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SynchronousSpringApplication.class, args);
 		//SynchronousSpringApplication sSpringApp = new SynchronousSpringApplication();
